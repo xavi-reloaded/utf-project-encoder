@@ -13,23 +13,27 @@ import static org.testng.Assert.*;
 public class FileEncoderTest {
 
     private FileEncoder sut;
+    private String resourcePath;
 
     @org.testng.annotations.BeforeMethod
     public void setUp() throws Exception {
         sut = new FileEncoder();
+        resourcePath = "/home/xavi.hidalgo/workspace/sandbox/utf-project-encoder/src/test/resources/";
     }
 
     @org.testng.annotations.Test
     public void testName() throws Exception {
         String actual = getStringFromFile();
-        String expected = "asdfg";
-        Assert.assertEquals(actual,expected);
+        String expected = "some";
+        Assert.assertTrue(actual.startsWith(expected));
 
     }
 
     private String getStringFromFile() throws IOException {
-        String sourcePath = "/Users/xavi/workspace/__train/utf-project-encoder/src/test/resources/ISO-8899-1_encoding_file.txt";
-        String destPath = "/Users/xavi/workspace/__train/utf-project-encoder/src/test/resources/destFile.txt";
+
+        String sourcePath = resourcePath + "ISO-8899-1_encoding_file.txt";
+        String destPath = resourcePath + "destFile.txt";
+
         return sut.writeForcedUTF8file(sourcePath,destPath);
     }
 
