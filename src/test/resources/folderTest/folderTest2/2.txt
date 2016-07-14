@@ -1,0 +1,4 @@
+some words here
+bla bla bla {
+    return 0;
+}
